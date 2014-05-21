@@ -11,12 +11,16 @@
     <ul>
 
       <% @movie_info.each do |movie_info| %>
-        <li><%= movie_info.tr("_"," ") %></li>
+        <% array=movie_info.split("^$") %>
 
+        <% array.each do |info| %>
+          <li><%= info.tr("_"," ") %></li>
+        <% end %>
 
       <% end %>
       </ul>
 
+    <!--will want to style the list to make movie info look pretty, handle nil elements-->
 
   </body>
 </html>

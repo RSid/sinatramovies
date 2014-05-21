@@ -11,7 +11,7 @@
     <ul>
 
       <% @movies.each do |movie| %>
-        <li><a href= <%= "movies/#{movie}" %>><%= movie.tr("_"," ") %></a></li>
+        <li><a href= <%= "movies/#{movie.split("^$")[0]}/#{movie.split("^$")[1]}" %>><%= movie.split("^$")[0].tr("_"," ") %></a></li>
 
 
       <% end %>

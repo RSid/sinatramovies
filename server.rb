@@ -27,21 +27,21 @@ def movie_titles (file_name)
   titles=[]
 
   all_data.each do |hash|
-      titles<<hash[:Title]
+      titles<<"#{hash[:Title]}^$#{hash[:ID]}"
     end
 
   titles.uniq.sort
 end
 
-def movie_info (file_name,movie_name)
+def movie_info (file_name,movie_name,movie_id)
 
   all_data=get_data(file_name)
   @movie_info=[]
 
   all_data.each do |hash|
 
-    if hash[:Title]==movie_name
-      @movie_info<< "#{hash[:Title]}, #{hash[:Year]}, #{hash[:Rating]}, #{hash[:Genre]}, #{hash[:Studio]}, #{hash[:Synopsis]}"
+    if hash[:Title]==movie_name && hash[:ID]==movie_id
+      @movie_info<< "Title: #{hash[:Title]}^$ Year: #{hash[:Year]}^$ Rating: #{hash[:Rating]}^$ Genre: #{hash[:Genre]}^$ Studio: #{hash[:Studio]}^$ Synopsis: #{hash[:Synopsis]}"
     end
   end
   @movie_info
@@ -54,12 +54,13 @@ get '/movies' do
   erb :index
 end
 
-get '/movies/:movie_id' do
+get '/movies/:movie_id/:id_num' do
   #will want to somehow make this list be dictated by above
   #and have links created from @teams
   @movie_spec = params[:movie_id]
+  @id_num=params[:id_num]
 
-  @movie_info=movie_info('movies.csv',@movie_spec)
+  @movie_info=movie_info('movies.csv',@movie_spec,@id_num)
 
   erb :movie
 end
