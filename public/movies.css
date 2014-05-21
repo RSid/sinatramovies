@@ -1,0 +1,28 @@
+body {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  color: #828282;
+}
+
+h1 {
+  text-align: center;
+  border-bottom: 1px solid #000000;
+  padding: 15px;
+}
+
+.movie_list li a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.movie_list li a:hover {
+  font-weight: bold;
+}
+
+.movie_info {
+  list-style: none;
+
+}
+
+.movie_info li {
+  color: #000000;
+  }

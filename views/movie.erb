@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Movie List</title>
-    <link rel="stylesheet" href="kick.css" />
+    <title>Movie Information</title>
+    <link rel="stylesheet" href="/movies.css" />
   </head>
 
   <body>
-    <h1>Movie List</h1>
+    <h1>Movie Information</h1>
 
-    <ul>
+    <ul class="movie_info">
 
       <% @movie_info.each do |movie_info| %>
         <% array=movie_info.split("^$") %>

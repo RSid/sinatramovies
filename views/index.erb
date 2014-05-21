@@ -2,20 +2,22 @@
 <html lang="en">
   <head>
     <title>Movie List</title>
-    <link rel="stylesheet" href="kick.css" />
+    <link rel="stylesheet" href="movies.css" />
   </head>
 
   <body>
     <h1>Movie List</h1>
 
-    <ul>
+    <ul class="movie_list">
 
-      <% @movies.each do |movie| %>
-        <li><a href= <%= "movies/#{movie.split("^$")[0]}/#{movie.split("^$")[1]}" %>><%= movie.split("^$")[0].tr("_"," ") %></a></li>
+        <% @movies.each do |movie| %>
+          <li>
+            <a href= <%= "movies/#{movie.split("^$")[0]}/#{movie.split("^$")[1]}" %>><%= movie.split("^$")[0].tr("_"," ") %></a>
+          </li>
+        <% end %>
 
 
-      <% end %>
-      </ul>
+    </ul>
 
 
   </body>
