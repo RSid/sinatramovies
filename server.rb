@@ -50,7 +50,7 @@ end
 def get_search_results(array, search_term)
   @movies=[]
   array.each do |elem|
-    new_elem=elem.split("^$")[0].downcase
+    new_elem=elem.split("^$")[0].downcase.tr("_"," ")
     if new_elem.include? search_term.downcase
       @movies.push(elem)
     end
@@ -71,7 +71,7 @@ get '/movies' do
 
 
   if @query != nil
-    if @movies_all.any? { |elem| elem.downcase.include? @query.downcase }
+    if @movies_all.any? { |elem| elem.downcase.tr("_"," ").include? @query.downcase }
       @movies=get_search_results(@movies_all,@query)
     else
       @message="Search did not match any results."
