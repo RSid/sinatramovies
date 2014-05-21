@@ -49,10 +49,17 @@ end
 
 
 get '/movies' do
-  @movies=movie_titles('movies.csv')
+  @movies_all=movie_titles('movies.csv')
+  @page=params[:page].to_i
+  @index= @page*20
+
+  @movies=@movies_all.slice(@index,20)
 
   erb :index
 end
+
+
+
 
 get '/movies/:movie_id/:id_num' do
   #will want to somehow make this list be dictated by above

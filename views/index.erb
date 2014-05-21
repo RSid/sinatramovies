@@ -16,9 +16,10 @@
           </li>
         <% end %>
 
-
     </ul>
 
+    <a href= <%= "movies?page=#{ @page-1}" %> > Previous 20 Results </a>
+    | <a href= <%= "movies?page=#{ @page+1 }" %> > Next 20 Results </a>
 
   </body>
 </html>
