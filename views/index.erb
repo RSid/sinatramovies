@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Movie List</title>
+    <link rel="stylesheet" href="kick.css" />
+  </head>
+
+  <body>
+    <h1>Movie List</h1>
+
+    <ul>
+
+      <% @movies.each do |movie| %>
+        <li><a href= <%= "movies/#{movie}" %>><%= movie.tr("_"," ") %></a></li>
+
+
+      <% end %>
+      </ul>
+
+
+  </body>
+</html>
