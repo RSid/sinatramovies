@@ -55,6 +55,7 @@ def get_search_results(array, search_term)
       @movies.push(elem)
     end
   end
+
   @movies
 end
 
@@ -70,9 +71,8 @@ get '/movies' do
 
 
   if @query != nil
-    if @movies_all.any? { |elem| elem.include? @query }
+    if @movies_all.any? { |elem| elem.downcase.include? @query.downcase }
       @movies=get_search_results(@movies_all,@query)
-      #@movies=@movies_all.slice(0,5)
     else
       @message="Search did not match any results."
     end
