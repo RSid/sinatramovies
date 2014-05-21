@@ -36,7 +36,6 @@ def movie_info (file_name,movie_name)
   all_data=get_data(file_name)
   @movie_info=[]
 
-
   all_data.each do |hash|
 
     if hash[:Title]==movie_name
@@ -46,5 +45,15 @@ def movie_info (file_name,movie_name)
   @movie_info
 end
 
+def get_search_results(array, search_term)
+  @movies=[]
+  array.each do |elem|
+    elem=elem.split("^$")[0].downcase
+    if elem.include? search_term.downcase
+      @movies.push(elem)
+    end
+  end
+  @movies
+end
 
-print movie_info('movies.csv','True_Lies')
+print get_search_results((movie_titles('movies.csv')),'fox')

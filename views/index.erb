@@ -8,6 +8,19 @@
   <body>
     <h1>Movie List</h1>
 
+    <form action="/movies" method="get">
+        <label for="query">Search: </label>
+        <input type="text" name="query" id="query" />
+
+        <input type="submit" value="Search" />
+    </form>
+
+    <p>
+
+      <%= @message %>
+
+    </p>
+
     <ul class="movie_list">
 
         <% @movies.each do |movie| %>
@@ -17,6 +30,7 @@
         <% end %>
 
     </ul>
+
 
     <a href= <%= "movies?page=#{ @page-1}" %> > Previous 20 Results </a>
     | <a href= <%= "movies?page=#{ @page+1 }" %> > Next 20 Results </a>

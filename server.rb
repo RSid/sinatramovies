@@ -47,6 +47,17 @@ def movie_info (file_name,movie_name,movie_id)
   @movie_info
 end
 
+def get_search_results(array, search_term)
+  @movies=[]
+  array.each do |elem|
+    new_elem=elem.split("^$")[0].downcase
+    if new_elem.include? search_term.downcase
+      @movies.push(elem)
+    end
+  end
+  @movies
+end
+
 
 get '/movies' do
   @movies_all=movie_titles('movies.csv')
@@ -54,6 +65,19 @@ get '/movies' do
   @index= @page*20
 
   @movies=@movies_all.slice(@index,20)
+
+  @query=params[:query]
+
+
+  if @query != nil
+    if @movies_all.any? { |elem| elem.include? @query }
+      @movies=get_search_results(@movies_all,@query)
+      #@movies=@movies_all.slice(0,5)
+    else
+      @message="Search did not match any results."
+    end
+
+  end
 
   erb :index
 end
